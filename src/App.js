@@ -1,25 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { HashRouter,Routes,Route } from 'react-router-dom';
+import Nav from './components/Nav';
+import CreateConsumer from './components/CreateConsumer';
+import ConsumerList from './components/ConsumerList';
+import EditConsumer from './components/EditConsumer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div class="container">
+      <HashRouter>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<CreateConsumer />} />
+          <Route path="/create-Pet" element={<CreateConsumer />} />
+          <Route path="/Pet-list" element={<ConsumerList />} />
+          <Route path="/edit-Pet/:id" element={<EditConsumer />} />
+        </Routes>
+      </HashRouter>
     </div>
   );
 }
 
 export default App;
+
